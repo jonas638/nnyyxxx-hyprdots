@@ -1,0 +1,136 @@
+{
+    "layer": "top",
+    "position": "left",
+    "spacing": 2,
+    "width": 44,
+    "margin": 2,
+    "modules-left": [
+        "custom/arch",
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": ["clock"],
+
+    "modules-right": [
+        "tray",
+        "battery",
+        "custom/updates",
+        "custom/keybinds",
+        "network",
+        "wireplumber",
+        "custom/power"
+    ],
+
+    "custom/arch": {
+        "format": "󰣇",
+        "on-click": "rofi -show run",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "on-click": "activate",
+        "format": "{name}",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "on-click-right": "fullscreen",
+        "icon-theme": "WhiteSur",
+        "icon-size": 25,
+        "tooltip-format": "{title}"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "network": {
+        "format-wifi" : "{icon}",
+        "format-icons": "󰀂",
+        "format-ethernet": "󰀂",
+        "tooltip-format-wifi": "{icon} {essid}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{icon} {ifname}\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "~/.config/rofi/wifi/wifi.sh &",
+        "interval": 5,
+        "nospacing": 1
+    },
+
+    "wireplumber": {
+        "format": "{icon}",
+        "nospacing": 1,
+        "tooltip-format": "Volume : {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": [" "]
+        },
+        "on-click": "pamixer -t",
+        "scroll-step": 1
+    },
+
+    "battery": {
+        "format": "{icon}",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format-full": "",
+        "tooltip-format": "{capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": true
+    },
+
+    "custom/power": {
+        "format": "󰤆",
+        "tooltip": false,
+        "on-click": "wlogout"
+    },
+
+    "custom/updates": {
+        "format": "󰚰",
+        "exec": "checkupdates | wc -l",
+        "interval": 60,
+        "on-click": "alacritty --title debloat -e ~/Documents/debloat.sh",
+        "tooltip-format": "{} updates available",
+        "tooltip": true
+    },
+
+    "clock": {
+        "format": "{:%I\n%M\n%p}",
+        "format-alt": "{:%a\n%b\n%d}"
+    }
+}
